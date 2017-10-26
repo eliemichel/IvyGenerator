@@ -19,10 +19,12 @@
 ***************************************************************************************/
 
 
-#include "BasicMesh.h"
-#include <glad/glad.h>
-#include <QtOpenGL>
 
+#include <glad/glad.h>
+#include "BasicMesh.h"
+//#include <QtOpenGL>
+#include <algorithm>
+#include <QImage>
 
 BasicMesh::BasicMesh()
 {

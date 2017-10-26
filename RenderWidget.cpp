@@ -70,6 +70,11 @@ RenderWidget::~RenderWidget()
 }
 
 
+void RenderWidget::initializeGL()
+{
+	gladLoadGL();
+}
+
 void RenderWidget::paintGL()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
