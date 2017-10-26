@@ -84,6 +84,10 @@ void Camera::setupViewMatrix()
 
 	computeVectorBasis(dir, right, up);
 
+	// dirty fix
+	// TODO: review the whole camera objects to use matrices and more moderne gl
+	glScalef(-1.0f, 1.0f, 1.0f);
+
 	glRotatef(-head * 180.0f / PI, up.x, up.y, up.z);
 
 	glRotatef(-pitch * 180.0f / PI, right.x, right.y, right.z);
