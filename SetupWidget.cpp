@@ -24,6 +24,14 @@
 #include "OBJLoader.h"
 #include "OBJWriter.h"
 
+#include <QSlider>
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QVBoxLayout>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QTimer>
+
 
 SetupWidget::SetupWidget(QWidget *parent) : QWidget(parent)
 {

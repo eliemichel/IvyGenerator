@@ -6,6 +6,7 @@ add_subdirectory(external)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 find_package(Qt5Widgets REQUIRED)
+find_package(Qt5OpenGL REQUIRED)
 if(Qt5Widgets_FOUND)
 	message("Using Qt ${Qt5Widgets_VERSION} from ${Qt5Widgets_INCLUDE_DIRS}")
 endif()
@@ -48,9 +49,12 @@ add_executable(
 )
 
 target_link_libraries(ivy glad)
+target_link_libraries(ivy glm)
+
 target_link_libraries_and_dll(ivy Qt5::Core)
 target_link_libraries_and_dll(ivy Qt5::Gui)
 target_link_libraries_and_dll(ivy Qt5::Widgets)
+target_link_libraries_and_dll(ivy Qt5::OpenGL)
 
 
 #file(COPY share DESTINATION .)

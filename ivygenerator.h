@@ -23,7 +23,7 @@
 #define IVYGENERATOR_H
 
 
-#include <QtGui>
+#include <QWidget>
 
 
 /** the main widget containing the opengl widget and the setup area */

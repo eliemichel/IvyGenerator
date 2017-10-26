@@ -20,7 +20,7 @@
 
 
 #include "OBJWriter.h"
-#include <QTGui>
+#include <QMessageBox>
 #include <iostream>
 #include <fstream>
 

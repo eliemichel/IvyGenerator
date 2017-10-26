@@ -22,6 +22,8 @@
 #include "IvyGenerator.h"
 #include "Common.h"
 
+#include <QSplitter>
+#include <QGridLayout>
 
 IvyGenerator::IvyGenerator(QWidget *parent) : QWidget(parent)
 {

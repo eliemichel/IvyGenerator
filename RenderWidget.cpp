@@ -21,6 +21,9 @@
 
 #include "RenderWidget.h"
 #include "Common.h"
+#include <QMouseEvent>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <limits>
 
 
@@ -184,15 +187,23 @@ void RenderWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
 
 	//compute a "click ray"
-	double x0, y0, z0, x1, y1, z1;
 
-	gluUnProject(event->pos().x(), height() - event->pos().y(), 0.0, modelMatrix, projMatrix, viewPort, &x0, &y0, &z0);
+	//double x0, y0, z0, x1, y1, z1;
+	//gluUnProject(event->pos().x(), height() - event->pos().y(), 0.0, modelMatrix, projMatrix, viewPort, &x0, &y0, &z0);
+	//gluUnProject(event->pos().x(), height() - event->pos().y(), 1.0, modelMatrix, projMatrix, viewPort, &x1, &y1, &z1);
 
-	gluUnProject(event->pos().x(), height() - event->pos().y(), 1.0, modelMatrix, projMatrix, viewPort, &x1, &y1, &z1);
+	glm::vec4 glmViewport = glm::make_vec4(viewPort);
+	glm::mat4 glmModelMatrix = glm::make_mat4(modelMatrix);
+	glm::mat4 glmProjMatrix = glm::make_mat4(projMatrix);
+
+	glm::vec3 win0 = glm::vec3(event->pos().x(), height() - event->pos().y(), 0.0);
+	glm::vec3 wout0 = glm::unProject(win0, glmModelMatrix, glmProjMatrix, glmViewport);
+
+	glm::vec3 win1 = glm::vec3(event->pos().x(), height() - event->pos().y(), 1.0);
+	glm::vec3 wout1 = glm::unProject(win1, glmModelMatrix, glmProjMatrix, glmViewport);
 	
-	Vector3d p0(x0, y0, z0);
-
-	Vector3d p1(x1, y1, z1);
+	Vector3d p0(wout0.x, wout0.y, wout0.z);
+	Vector3d p1(wout1.x, wout1.y, wout1.z);
 
 
 	//find intersecting triangle with minimum distance

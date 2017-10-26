@@ -23,7 +23,9 @@
 #define SETUPWIDGET_H
 
 
-#include <QtGui>
+#include <QWidget>
+#include <QLabel>
+#include <QPushButton>
 
 
 /** setup widget */

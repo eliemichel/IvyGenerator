@@ -22,7 +22,7 @@
 #include "Camera.h"
 #include <glad/glad.h>
 #include <QtOpenGL>
-
+#include <glm/gtc/matrix_transform.hpp>
 
 Camera::Camera()
 {
@@ -70,7 +70,9 @@ void Camera::computeVectorBasis(Vector3d &dir, Vector3d &right, Vector3d &up)
 
 void Camera::setupPerspectiveMatrix()
 {
-	gluPerspective(fovy, aspectRatio, clipNear, clipFar);
+	//gluPerspective(fovy, aspectRatio, clipNear, clipFar);
+	glm::mat4 projectionMatrix = glm::perspective(glm::radians(fovy), aspectRatio, clipNear, clipFar);
+	glLoadMatrixf(&projectionMatrix[0][0]);
 
 	glScalef(1.0f, 1.0f, -1.0f);
 }

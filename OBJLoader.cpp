@@ -22,7 +22,7 @@
 #include "OBJLoader.h"
 #include "BasicMesh.h"
 #include <sstream>
-#include <QTGui>
+#include <QMessageBox>
 
 
 std::ifstream OBJLoader::fileStream;
