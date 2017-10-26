@@ -1,3 +1,5 @@
 build/
 build-*/
 dist/
+Win32/
+x64/
